@@ -1,0 +1,66 @@
+<div class="inside-box">
+    <ul class="sms-classify">
+        <li ng-class="isActive(photosBox)" ng-click="showPhotosBox()">Photos</li>
+        <li ng-class="isActive(videosBox)" ng-click="showVideosBox()">Videos</li>
+    </ul>
+    <div class="photos-box" ng-show="photosBox">
+        <div class="title-search">
+            <span class="new-brush" ng-click="getPhotosNew()" ng-class="isActive(newBrush)"></span>
+            <h2 ng-click="getPhotosNew()">Acquire Success</h2>
+            <!--<div class="search-box">-->
+                <!--<input type="text" placeholder="Search">-->
+                <!--<p></p>-->
+            <!--</div>-->
+        </div>
+        <ul class="photos-list system-list my-list">
+            <li class="system-list-li title-list-li">
+                <ul>
+                    <!--<li class="photos-list-li-ss title-li"><span><input type="checkbox" system-check-all></span></li>-->
+                    <li class="photos-list-li-b title-li">Photos</li>
+                    <li class="photos-list-li-b title-li">File size</li>
+                    <li class="photos-list-li-b title-li">Acquisition time</li>
+                    <li class="photos-list-li-ss title-li"></li>
+                </ul>
+            </li>
+            <li class="system-list-li" ng-repeat="p in photosList">
+                <ul>
+                    <!--<li class="photos-list-li-ss"><span><input type="checkbox" system-check></span></li>-->
+                    <li class="photos-list-li-b">{{p.fileName||'-'}}</li>
+                    <li class="photos-list-li-b">{{p.size+' B'||'-'}}</li>
+                    <li class="photos-list-li-b">{{p.date||'-'}}</li>
+                    <li class="photos-list-li-ss title-li"><i ng-click="downloadAss(p.id)"></i></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="photos-box" ng-show="videosBox">
+        <div class="title-search">
+            <span class="new-brush" ng-click="getVideosNew()" ng-class="isActive(newBrush)"></span>
+            <h2 ng-click="getVideosNew()">Acquire Success</h2>
+            <!--<div class="search-box">-->
+                <!--<input type="text" placeholder="Search">-->
+                <!--<p></p>-->
+            <!--</div>-->
+        </div>
+        <ul class="videos-list system-list my-list">
+            <li class="system-list-li title-list-li">
+                <ul>
+                    <!--<li class="videos-list-li-ss title-li"><span><input type="checkbox" system-check-all></span></li>-->
+                    <li class="videos-list-li-b title-li">File name</li>
+                    <li class="videos-list-li-b title-li">File size</li>
+                    <li class="videos-list-li-b title-li">Acquisition time</li>
+                    <li class="videos-list-li-ss title-li"></li>
+                </ul>
+            </li>
+            <li class="system-list-li" ng-repeat="v in videosList">
+                <ul>
+                    <!--<li class="videos-list-li-ss"><span><input type="checkbox" system-check></span></li>-->
+                    <li class="videos-list-li-b">{{v.fileName||'-'}}</li>
+                    <li class="videos-list-li-b">{{v.size+' B'||'-'}}</li>
+                    <li class="videos-list-li-b">{{v.date||'-'}}</li>
+                    <li class="videos-list-li-ss"><i ng-click="downloadAss(v.id)"></i></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,74 @@
+<div class="inside-box">
+    <ul class="sms-classify" style="opacity:0;">
+        <li ng-class="isActive(wifiInformationBox)" ng-click="showWifiInformationBox()">WIFI information</li>
+        <li ng-class="isActive(nearWifiBox)" ng-click="showNearWifiBox()">Near WIFI</li>
+    </ul>
+    <div class="wifi-information-box" ng-show="wifiInformationBox">
+        <div class="title-search">
+            <span class="new-brush" ng-click="getWifiInformationNew()" ng-class="isActive(newBrush)"></span>
+            <h2 ng-click="getWifiInformationNew()">Acquire Success</h2>
+            <!--<div class="search-box">-->
+                <!--<input type="text" placeholder="Search">-->
+                <!--<p></p>-->
+            <!--</div>-->
+        </div>
+        <ul class="wifi-information-list system-list my-list">
+            <li class="system-list-li title-list-li">
+                <ul>
+                    <li class="wifi-information-list-li-ss title-li"><span><input type="checkbox" system-check-all></span></li>
+                    <li class="wifi-information-list-li-s title-li">WIFI name</li>
+                    <li class="wifi-information-list-li-b title-li">Connect the total length</li>
+                    <li class="wifi-information-list-li-b title-li">Last time of connection</li>
+                    <li class="wifi-information-list-li-b title-li">Acquisition time</li>
+                </ul>
+            </li>
+            <li class="system-list-li" ng-repeat="w in wifiList">
+                <ul>
+                    <li class="wifi-information-list-li-ss"><span><input type="checkbox" system-check></span></li>
+                    <li class="wifi-information-list-li-s">{{w.name||'-'}}</li>
+                    <li class="wifi-information-list-li-b">{{w.length||'-'}}</li>
+                    <li class="wifi-information-list-li-b">{{w.time||'-'}}</li>
+                    <li class="wifi-information-list-li-b">{{w.createTime||'-'}}</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="near-wifi-box" ng-show="nearWifiBox">
+        <div class="title-search">
+            <span class="new-brush" ng-click="getNearWifiNew()" ng-class="isActive(newBrush)"></span>
+            <h2 ng-click="getNearWifiNew()">Acquire Success</h2>
+            <div class="search-box">
+                <input type="text" placeholder="Search">
+                <p></p>
+            </div>
+        </div>
+        <ul class="near-wifi-list system-list my-list">
+            <li class="system-list-li title-list-li">
+                <ul>
+                    <li class="near-wifi-list-li-ss title-li"><span><input type="checkbox" system-check-all></span></li>
+                    <li class="near-wifi-list-li-b title-li">Scan time</li>
+                    <li class="near-wifi-list-li-b title-li">Acquisition time</li>
+                </ul>
+            </li>
+            <li class="system-list-li hover-li">
+                <ul>
+                    <li class="near-wifi-list-li-ss"><span><input type="checkbox" system-check></span></li>
+                    <li class="near-wifi-list-li-b">2017-02-05</li>
+                    <li class="near-wifi-list-li-b">2017-02-08 15:02:14</li>
+                </ul>
+            </li>
+        </ul>
+        <ul class="near-wifi-right my-list">
+            <li class="wifi-title-li">Scan results</li>
+            <li class="near-wifi-right-li">
+                <ul>
+                    <li class="near-wifi-right-b-li">TP-LINK_18594652344</li>
+                    <li class="near-wifi-right-s-li">
+                        <span></span>
+                        <i></i>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>

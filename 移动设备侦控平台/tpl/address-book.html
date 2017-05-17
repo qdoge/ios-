@@ -1,0 +1,30 @@
+<div class="inside-box">
+    <div class="address-book-box">
+        <div class="title-search">
+            <span class="new-brush" ng-click="getAddressBookNew()" ng-class="isActive(newBrush)"></span>
+            <h2 ng-click="getAddressBookNew()">Acquire Success</h2>
+            <div class="search-box">
+                <input type="text" placeholder="Search" ng-model="search" ng-blur="searchAll()">
+                <p ng-click="searchAll()"></p>
+            </div>
+        </div>
+        <ul class="address-book-list system-list my-list">
+            <li class="system-list-li title-list-li">
+                <ul>
+                    <li class="address-book-list-li-s title-li"><span><input type="checkbox" system-check-all></span></li>
+                    <li class="address-book-list-li-b title-li">Name</li>
+                    <li class="address-book-list-li-b title-li">Phone</li>
+                    <li class="address-book-list-li-b title-li">Acquisition time</li>
+                </ul>
+            </li>
+            <li class="system-list-li" ng-repeat="a in addressList">
+                <ul>
+                    <li class="address-book-list-li-s"><span><input type="checkbox" system-check></span></li>
+                    <li class="address-book-list-li-b">{{a.name||'-'}}</li>
+                    <li class="address-book-list-li-b">{{a.number||'-'}}</li>
+                    <li class="address-book-list-li-b">{{a.date||'-'}}</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>

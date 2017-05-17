@@ -1,0 +1,31 @@
+<div class="inside-box">
+    <div class="device-information-box">
+        <h2>Device Information</h2>
+        <img src="images/device-photo-big.png" alt="" class="device-phone-big">
+        <div class="device-information">
+            <ul>
+                <li>Device: {{phoneDevice}}</li>
+                <li>Version: {{phoneVersion}}</li>
+                <li>Phone Number: {{phoneNumber}}</li>
+                <li>appleId: {{phoneAppId}}</li>
+            </ul>
+            <button class="my-button" ng-click="AcquireInfo()">Acquire Info</button>
+            <!--<button  class="my-button">Download System</button>-->
+        </div>
+    </div>
+    <div class="device-selection-box">
+        <h2>Device Selection</h2>
+        <ul class="device-selection my-list">
+            <li ng-repeat="d in deviceList" ng-click="pickOneDevice(d.serialNum,d.id)" ng-class="isPicked(d.serialNum)" pick-one-device>
+                <h6 ng-class="isOnline(d.status)"></h6>
+                <h3>{{isOffline(d.status)}}</h3>
+                <img src="images/device-phone-small.png" alt="">
+                <div class="device-phone-message">
+                    <h4>Device ID {{d.id}}</h4>
+                    <h4>{{d.deviceName}}</h4>
+                    <p>{{d.serialNum}}</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

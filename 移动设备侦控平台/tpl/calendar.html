@@ -1,0 +1,30 @@
+<div class="inside-box">
+    <div class="calendar-box">
+        <div class="title-search">
+            <span class="new-brush" ng-click="getCalendarNew()" ng-class="isActive(newBrush)"></span>
+            <h2 ng-click="getCalendarNew()">Acquire Success</h2>
+            <div class="search-box">
+                <input type="text" placeholder="Search" ng-model="search" ng-blur="searchAll()">
+                <p ng-click="searchAll()"></p>
+            </div>
+        </div>
+        <ul class="calendar-list system-list my-list">
+            <li class="system-list-li title-list-li">
+                <ul>
+                    <li class="calendar-list-li-s title-li"><span><input type="checkbox" system-check-all></span></li>
+                    <li class="calendar-list-li-b title-li">Event time</li>
+                    <li class="calendar-list-li-b title-li">Event content</li>
+                    <li class="calendar-list-li-b title-li">Remarks</li>
+                </ul>
+            </li>
+            <li class="system-list-li" ng-repeat="c in calendarList">
+                <ul>
+                    <li class="calendar-list-li-s"><span><input type="checkbox" system-check></span></li>
+                    <li class="calendar-list-li-b">{{c.creation_date}}</li>
+                    <li class="calendar-list-li-b">{{c.summary||'-'}}</li>
+                    <li class="calendar-list-li-b">{{c.description||'-'}}</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>

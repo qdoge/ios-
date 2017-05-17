@@ -1,0 +1,75 @@
+<div class="inside-box">
+    <ul class="sms-classify">
+        <li ng-class="isActive(callRecording)" ng-click="showCallRecording()">Call recording</li>
+        <li ng-class="isActive(silentRecording)" ng-click="showSilentRecording()">Silent recording</li>
+    </ul>
+    <div class="call-recording-box" ng-show="callRecording">
+        <div class="title-search">
+            <span class="new-brush" ng-click="getCallRecordingNew()" ng-class="isActive(newBrush)"></span>
+            <h2 ng-click="getCallRecordingNew()">Acquire Success</h2>
+            <!--<span class="down-logo"></span>-->
+            <input type="text" id="call-recording-end-time" class="recording-time-end-input" ng-model="today" ng-change="getTimeSearch()">
+            <h5 class="time-line">-</h5>
+            <input type="text" id="call-recording-start-time" class="recording-time-start-input" ng-model="lastWeek" ng-change="getTimeSearch()">
+        </div>
+        <ul class="call-recording-list system-list my-list">
+            <li class="system-list-li title-list-li">
+                <ul>
+                    <!--<li class="call-recording-list-li-ss title-li"><span><input type="checkbox" system-check-all></span></li>-->
+                    <li class="call-recording-list-li-b title-li">Recording phone</li>
+                    <li class="call-recording-list-li-b title-li">Recording time</li>
+                    <li class="call-recording-list-li-s title-li">File size</li>
+                    <li class="call-recording-list-li-b title-li">Acquisition time</li>
+                    <li class="call-recording-list-li-b title-li">whether to download</li>
+                    <li class="call-recording-list-li-ss title-li">Download</li>
+                </ul>
+            </li>
+            <li class="system-list-li" ng-repeat="c in callRecordingList">
+                <ul>
+                    <!--<li class="call-recording-list-li-ss"><span><input type="checkbox" system-check></span></li>-->
+                    <li class="call-recording-list-li-b">{{c.titlePhone||'-'}}</li>
+                    <li class="call-recording-list-li-b">{{c.time||'-'}}</li>
+                    <li class="call-recording-list-li-s">-</li>
+                    <li class="call-recording-list-li-b">{{c.createTime||'-'}}</li>
+                    <li class="call-recording-list-li-b">{{canDownload(c.status)}}</li>
+                    <li class="call-recording-list-li-ss"><i ng-click="DownloadRecording(c.filePath,c.titleName)"></i></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="silent-recording-box" ng-show="silentRecording">
+        <div class="title-search">
+            <span class="new-brush" ng-click="getSilentRecordingNew()" ng-class="isActive(newBrush)"></span>
+            <h2 ng-click="getSilentRecordingNew()">Acquire Success</h2>
+            <h3 class="time-interval">
+                Time: <input type="number" min="1" ng-model="timeInterval"> S
+            </h3>
+            <!--<span class="down-logo"></span>-->
+            <input type="text" id="silent-recording-end-time" class="recording-time-end-input" ng-model="mToday" ng-change="mGetTimeSearch()">
+            <h5 class="time-line">-</h5>
+            <input type="text" id="silent-recording-start-time" class="recording-time-start-input" ng-model="mLastWeek" ng-change="mGetTimeSearch()">
+        </div>
+        <ul class="silent-recording-list system-list my-list">
+            <li class="system-list-li title-list-li">
+                <ul>
+                    <!--<li class="silent-recording-list-li-ss title-li"><span><input type="checkbox" system-check-all></span></li>-->
+                    <li class="silent-recording-list-li-b title-li">Recording time</li>
+                    <li class="silent-recording-list-li-s title-li">File size</li>
+                    <li class="silent-recording-list-li-b title-li">Acquisition time</li>
+                    <li class="silent-recording-list-li-b title-li">whether to download</li>
+                    <li class="silent-recording-list-li-ss title-li">Download</li>
+                </ul>
+            </li>
+            <li class="system-list-li" ng-repeat="a in assList">
+                <ul>
+                    <!--<li class="silent-recording-list-li-ss"><span><input type="checkbox" system-check></span></li>-->
+                    <li class="silent-recording-list-li-b">{{a.time||'-'}}</li>
+                    <li class="silent-recording-list-li-s">{{a.size+'B'||'-'}}</li>
+                    <li class="silent-recording-list-li-b">{{a.date||'-'}}</li>
+                    <li class="silent-recording-list-li-b">{{canDownload(a.status)}}</li>
+                    <li class="silent-recording-list-li-ss"><i ng-click="mDownload(a.id)"></i></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>

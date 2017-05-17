@@ -1,0 +1,30 @@
+<div class="inside-box">
+    <div class="browser-box">
+        <div class="title-search">
+            <span class="new-brush" ng-click="getBrowserNew()" ng-class="isActive(newBrush)"></span>
+            <h2 ng-click="getBrowserNew()">Acquire Success</h2>
+            <div class="search-box">
+                <input type="text" placeholder="Search" ng-model="search" ng-blur="searchAll()">
+                <p ng-click="searchAll()"></p>
+            </div>
+        </div>
+        <ul class="browser-list system-list my-list">
+            <li class="system-list-li title-list-li">
+                <ul>
+                    <li class="browser-list-li-ss title-li"><span><input type="checkbox" system-check-all></span></li>
+                    <li class="browser-list-li-b title-li">Browser</li>
+                    <li class="browser-list-li-b title-li">Browsing history</li>
+                    <li class="browser-list-li-b title-li">Acquisition time</li>
+                </ul>
+            </li>
+            <li class="system-list-li" ng-repeat="b in browserList">
+                <ul>
+                    <li class="browser-list-li-ss"><span><input type="checkbox" system-check></span></li>
+                    <li class="browser-list-li-b">{{b.browser||'-'}}</li>
+                    <li class="browser-list-li-b">{{b.url||'-'}}</li>
+                    <li class="browser-list-li-b">{{b.time||'-'}}</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>

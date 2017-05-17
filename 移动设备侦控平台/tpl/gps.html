@@ -1,0 +1,34 @@
+<div class="inside-box">
+    <div class="gps-box">
+        <div class="title-search">
+            <span class="new-brush" ng-click="getGpsNew()" ng-class="isActive(newBrush)"></span>
+            <h2 ng-click="getGpsNew()">Acquire Success</h2>
+            <!--<div class="search-box">-->
+                <!--<input type="text" placeholder="Search">-->
+                <!--<p></p>-->
+            <!--</div>-->
+        </div>
+        <ul class="gps-list system-list my-list">
+            <li class="system-list-li title-list-li">
+                <ul>
+                    <li class="gps-list-li-ss title-li"><span><input type="checkbox" system-check-all></span></li>
+                    <li class="gps-list-li-b title-li">Lat & Long</li>
+                    <li class="gps-list-li-b title-li">Geo location</li>
+                    <li class="gps-list-li-s title-li">Acquisition type</li>
+                    <li class="gps-list-li-s title-li">Behavior type</li>
+                    <li class="gps-list-li-b title-li">Acquisition time</li>
+                </ul>
+            </li>
+            <li class="system-list-li" ng-repeat="g in gpsList">
+                <ul>
+                    <li class="gps-list-li-ss"><span><input type="checkbox" system-check></span></li>
+                    <li class="gps-list-li-b">{{showLocation(g.latitude,g.longitude)}}</li>
+                    <li class="gps-list-li-b">{{g.address||'-'}}</li>
+                    <li class="gps-list-li-s">-</li>
+                    <li class="gps-list-li-s">-</li>
+                    <li class="gps-list-li-b">{{g.time||'-'}}</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,28 @@
+<div class="inside-box">
+    <div class="memo-box">
+        <div class="title-search">
+            <span class="new-brush" ng-click="getMemoNew()" ng-class="isActive(newBrush)"></span>
+            <h2 ng-click="getMemoNew()">Acquire Success</h2>
+            <div class="search-box">
+                <input type="text" placeholder="Search" ng-model="search" ng-blur="searchAll()">
+                <p ng-click="searchAll()"></p>
+            </div>
+        </div>
+        <ul class="memo-list system-list my-list">
+            <li class="system-list-li title-list-li">
+                <ul>
+                    <li class="memo-list-li-s title-li"><span><input type="checkbox" system-check-all></span></li>
+                    <li class="memo-list-li-b title-li">Memo content</li>
+                    <li class="memo-list-li-b title-li">Acquisition time</li>
+                </ul>
+            </li>
+            <li class="system-list-li" ng-repeat="m in memoList">
+                <ul>
+                    <li class="memo-list-li-s"><span><input type="checkbox" system-check></span></li>
+                    <li class="memo-list-li-b">{{m.content||'-'}}</li>
+                    <li class="memo-list-li-b">{{m.time}}</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>

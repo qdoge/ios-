@@ -1,0 +1,97 @@
+<div class="inside-box">
+    <ul class="sms-classify" style="opacity: 0">
+        <li ng-class="isActive(getSmsBox)" ng-click="showGetSms()">Get SMS</li>
+        <li ng-class="isActive(smsControlBox)" ng-click="showSmsControl()">SMS Control</li>
+    </ul>
+    <div class="get-sms-box" ng-show="getSmsBox">
+        <div class="title-search">
+            <span class="new-brush" ng-click="getSmsNew()" ng-class="isActive(newBrush)"></span>
+            <h2 ng-click="getSmsNew()">Acquire Success</h2>
+            <div class="search-box">
+                <input type="text" placeholder="Search" ng-model="search" ng-blur="searchAll()">
+                <p ng-click="searchAll()"></p>
+            </div>
+        </div>
+        <ul class="sms-get-list system-list my-list">
+            <li class="system-list-li title-list-li">
+                <ul>
+                    <!--<li class="sms-list-li-s title-li"><span><input type="checkbox" system-check-all></span></li>-->
+                    <li class="sms-list-li-s title-li">Name</li>
+                    <li class="sms-list-li-b title-li">Phone</li>
+                    <li class="sms-list-li-b title-li">Number</li>
+                    <li class="sms-list-li-b title-li">Acquisition time</li>
+                </ul>
+            </li>
+            <li class="system-list-li" ng-repeat="s in smsList">
+                <ul>
+                    <!--<li class="sms-list-li-s"><span><input type="checkbox" system-check></span></li>-->
+                    <li class="sms-list-li-s">-</li>
+                    <li class="sms-list-li-b">{{s.fromnumber}}</li>
+                    <li class="sms-list-li-b">{{s.number}}</li>
+                    <li class="sms-list-li-b">{{s.time}}</li>
+                </ul>
+            </li>
+        </ul>
+        <div class="qq-chat-content">
+            <h1>Chat Content</h1>
+            <ul class="chat-list my-list">
+                <li class="chat-list-li">
+                    <h2>2017-02-15 12:01:44</h2>
+                    <img src="images/woman.png" alt="" class="chat-object left-float">
+                    <p class="left-p">0.0</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="sms-control-box" ng-show="smsControlBox">
+        <div class="title-search">
+            <span class="new-brush" ng-click="getSmsNew()" ng-class="isActive(newBrush)"></span>
+            <h2 ng-click="smsControlNew()">Acquire Success</h2>
+            <div class="search-box">
+                <input type="text" placeholder="Search">
+                <p></p>
+            </div>
+        </div>
+        <ul class="sms-control-list system-list my-list">
+            <li class="system-list-li title-list-li">
+                <ul>
+                    <li class="sms-c-list-li-ss title-li"><span><input type="checkbox" system-check-all></span></li>
+                    <li class="sms-c-list-li-s title-li">Which command</li>
+                    <li class="sms-c-list-li-s title-li">State feedback</li>
+                    <li class="sms-c-list-li-b title-li">Issue time</li>
+                    <li class="sms-c-list-li-b title-li">Feedback time</li>
+                </ul>
+            </li>
+            <li class="system-list-li">
+                <ul>
+                    <li class="sms-c-list-li-ss"><span><input type="checkbox" system-check></span></li>
+                    <li class="sms-c-list-li-s">Call History</li>
+                    <li class="sms-c-list-li-s">18254693254</li>
+                    <li class="sms-c-list-li-b">2017-03-01 15:02:11</li>
+                    <li class="sms-c-list-li-b">2017-03-21 16:58:26</li>
+                </ul>
+            </li>
+        </ul>
+        <div class="sms-command-box">
+            <div class="type-command-box">
+                <h2 class="sms-command-title">Type the Command</h2>
+                <textarea readonly ng-model="typeCommand"></textarea>
+                <button class="my-button">send</button>
+            </div>
+            <div class="feedback-command-box">
+                <h2 class="sms-command-title">Feedback Command</h2>
+                <ul class="my-list">
+                    <li>
+                        <h3>pwd</h3>
+                    </li>
+                    <li>
+                        <h3>can you fuck my ass?</h3>
+                    </li>
+                    <li>
+                        <h3>I m very sure !</h3>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

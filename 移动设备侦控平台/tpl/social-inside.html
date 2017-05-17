@@ -1,0 +1,261 @@
+<div class="inside-box">
+    <ul class="social-inside-classify">
+        <!--<li class="social-inside-classify-b-li" ng-class="isActive(softwareBox)" ng-click="getSoftwareShow()">Social software DB</li>-->
+        <li class="social-inside-classify-b-li" ng-class="isActive(qqBox)" ng-click="getQQShow()">QQ</li>
+        <li class="social-inside-classify-s-li" ng-class="isActive(weChatBox)" ng-click="getWeChatShow()">WeChat</li>
+        <li class="social-inside-classify-s-li" ng-class="isActive(whatsappBox)" ng-click="getWhatsappShow()">Whatsapp</li>
+        <li class="social-inside-classify-s-li" ng-class="isActive(twitterBox)" ng-click="getTwitterShow()">Twitter</li>
+        <li class="social-inside-classify-s-li" ng-class="isActive(telegramBox)" ng-click="getTelegramShow()">Telegram</li>
+    </ul>
+    <div class="software-db-box" ng-show="softwareBox">
+        <div class="title-search">
+            <span class="new-brush" ng-click="getSoftWareDBNew()" ng-class="isActive(newBrush)"></span>
+            <h2 ng-click="getSoftWareDBNew()">Acquire Success</h2>
+            <div class="search-box">
+                <input type="text" placeholder="Search">
+                <p></p>
+            </div>
+        </div>
+        <ul class="software-db-list system-list my-list">
+            <li class="system-list-li title-list-li">
+                <ul>
+                    <li class="software-db-list-li-s title-li"><span><input type="checkbox" system-check-all></span></li>
+                    <li class="software-db-list-li-b title-li">File name</li>
+                    <li class="software-db-list-li-b title-li">File size</li>
+                    <li class="software-db-list-li-b title-li">Acquisition time</li>
+                </ul>
+            </li>
+            <li class="system-list-li">
+                <ul>
+                    <li class="software-db-list-li-s"><span><input type="checkbox" system-check></span></li>
+                    <li class="software-db-list-li-b">History</li>
+                    <li class="software-db-list-li-b">120MB</li>
+                    <li class="software-db-list-li-b">2017-03-21 16:58:26</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="qq-box" ng-show="qqBox">
+        <div class="title-search">
+            <span class="new-brush" ng-click="getQQNew()" ng-class="isActive(newBrush)"></span>
+            <h2 ng-click="getQQNew()">Acquire Success</h2>
+            <select class="social-qq-select" ng-model="moQQNumber" ng-change="changeQQNumber(moQQNumber)">
+                <option ng-repeat="q in loadedQQ">{{q.qqNumber}}</option>
+            </select>
+            <select class="social-qq-select" ng-change="changeQQType(qqModel)" ng-model="qqModel">
+                <option>QQ personal</option>
+                <option>QQ discussion group</option>
+                <option>QQ group</option>
+            </select>
+            <!--<div class="search-box">-->
+                <!--<input type="text" placeholder="Search">-->
+                <!--<p></p>-->
+            <!--</div>-->
+        </div>
+        <ul class="qq-list system-list my-list">
+            <li class="system-list-li title-list-li">
+                <ul>
+                    <li class="qq-list-li-s title-li"><span><input type="checkbox" system-check-all></span></li>
+                    <li class="qq-list-li-b title-li">Number</li>
+                    <li class="qq-list-li-b title-li">Contacts</li>
+                </ul>
+            </li>
+            <li class="system-list-li" ng-repeat="a in qqList" ng-click="checkChat(a.chatMessage)">
+                <ul>
+                    <li class="qq-list-li-s"><span><input type="checkbox" system-check></span></li>
+                    <li class="qq-list-li-b">{{qqTypeNumber(a.type,a.opDiscussNumber,a.opQQNumber,a.opTroopNumber)}}</li>
+                    <li class="qq-list-li-b">{{qqTypeName(a.type,a.opDiscussName,a.getOpTroopName)}}</li>
+                </ul>
+            </li>
+        </ul>
+        <div class="qq-chat-content">
+            <h1>Chat Content</h1>
+            <ul class="chat-list my-list">
+                <li class="chat-list-li" ng-repeat="c in chatList">
+                    <h2>{{c.time}}</h2>
+                    <img src="images/woman.png" alt="" class="chat-object" ng-class="chatFloat(c.flag)">
+                    <p ng-class="contentFlag(c.flag)">{{c.content}}</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="qq-box" ng-show="weChatBox">
+        <div class="title-search">
+            <span class="new-brush" ng-click="getWeChatNew()" ng-class="isActive(newBrush)"></span>
+            <h2 ng-click="getWeChatNew()">Acquire Success</h2>
+            <select class="social-qq-select" ng-model="weChatNum" ng-change="changeWeChatNumber()">
+                <option ng-repeat="w in weChatNumber">{{w.myWechatIdNumber}}</option>
+            </select>
+            <!--<select class="social-qq-select">-->
+                <!--<option>QQ group</option>-->
+                <!--<option>QQ group</option>-->
+                <!--<option>QQ group</option>-->
+            <!--</select>-->
+            <!--<div class="search-box">-->
+                <!--<input type="text" placeholder="Search">-->
+                <!--<p></p>-->
+            <!--</div>-->
+        </div>
+        <ul class="qq-list system-list my-list">
+            <li class="system-list-li title-list-li">
+                <ul>
+                    <li class="qq-list-li-s title-li"><span><input type="checkbox" system-check-all></span></li>
+                    <li class="qq-list-li-b title-li">weChatNumber</li>
+                    <li class="qq-list-li-b title-li">Contacts</li>
+                </ul>
+            </li>
+            <li class="system-list-li" ng-repeat="we in weChatList" ng-click="getWeChatChatList(we.chatMessage)">
+                <ul>
+                    <li class="qq-list-li-s"><span><input type="checkbox" system-check></span></li>
+                    <li class="qq-list-li-b">{{we.opWechatIDNumber}}</li>
+                    <li class="qq-list-li-b">-</li>
+                </ul>
+            </li>
+        </ul>
+        <div class="qq-chat-content">
+            <h1>Chat Content</h1>
+            <ul class="chat-list my-list">
+                <li class="chat-list-li" ng-repeat="p in weChatChatList">
+                    <h2>{{p.createTime}}</h2>
+                    <img src="images/woman.png" alt="" class="chat-object" ng-class="chatFloat(p.desc)">
+                    <p ng-class="contentFlag(p.desc)">{{p.content}}</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="qq-box" ng-show="whatsappBox">
+        <div class="title-search">
+            <span class="new-brush" ng-click="getWhatsappNew()" ng-class="isActive(newBrush)"></span>
+            <h2 ng-click="getWhatsappNew()">Acquire Success</h2>
+            <select class="social-qq-select" ng-model="whatsAppNumber" ng-change="changeWNumber()">
+                <option ng-repeat="i in whatsAppNumberList">{{i.myWhatsAppIdNumber}}</option>
+            </select>
+            <select class="social-qq-select" ng-model="whatsAppType" ng-change="changeWNumber()">
+                <option>Personal</option>
+                <option>Group</option>
+            </select>
+            <!--<div class="search-box">-->
+                <!--<input type="text" placeholder="Search">-->
+                <!--<p></p>-->
+            <!--</div>-->
+        </div>
+        <ul class="qq-list system-list my-list">
+            <li class="system-list-li title-list-li">
+                <ul>
+                    <li class="qq-list-li-s title-li"><span><input type="checkbox" system-check-all></span></li>
+                    <li class="qq-list-li-b title-li">Number</li>
+                    <li class="qq-list-li-b title-li">Contacts</li>
+                </ul>
+            </li>
+            <li class="system-list-li" ng-repeat="wa in whatsAppList" ng-click="getWhatsAppChat(wa.chatMessage)">
+                <ul>
+                    <li class="qq-list-li-s"><span><input type="checkbox" system-check></span></li>
+                    <li class="qq-list-li-b">{{wa.opwhatsAppNumber}}</li>
+                    <li class="qq-list-li-b">-</li>
+                </ul>
+            </li>
+        </ul>
+        <div class="qq-chat-content">
+            <h1>Chat Content</h1>
+            <ul class="chat-list my-list">
+                <li class="chat-list-li" ng-repeat="c in whatsAppChatList">
+                    <h2>{{c.whats_msg_date|limitTo:19}}</h2>
+                    <img src="images/woman.png" alt="" class="chat-object" ng-class="chatFloat(c.whats_msg_isfrom)">
+                    <p ng-class="contentFlag(c.whats_msg_isfrom)">{{c.whats_msg_content||'-'}}</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="qq-box" ng-show="twitterBox">
+        <div class="title-search">
+            <span class="new-brush" ng-click="getTwitterNew()" ng-class="isActive(newBrush)"></span>
+            <h2 ng-click="getTwitterNew()">Acquire Success</h2>
+            <!--<select class="social-qq-select">-->
+                <!--<option>1071256325</option>-->
+                <!--<option>1071256325</option>-->
+                <!--<option>1071256325</option>-->
+            <!--</select>-->
+            <!--<select class="social-qq-select">-->
+                <!--<option>QQ group</option>-->
+                <!--<option>QQ group</option>-->
+                <!--<option>QQ group</option>-->
+            <!--</select>-->
+            <!--<div class="search-box">-->
+                <!--<input type="text" placeholder="Search">-->
+                <!--<p></p>-->
+            <!--</div>-->
+        </div>
+        <ul class="twitter-list system-list my-list">
+            <li class="system-list-li title-list-li">
+                <ul>
+                    <!--<li class="twitter-list-li-s title-li"><span><input type="checkbox" system-check-all></span></li>-->
+                    <li class="twitter-list-li-b title-li">File name</li>
+                    <li class="twitter-list-li-b title-li">File size</li>
+                    <li class="twitter-list-li-s title-li">Download</li>
+                </ul>
+            </li>
+            <li class="system-list-li" ng-repeat="t in twitterList">
+                <ul>
+                    <!--<li class="twitter-list-li-s"><span><input type="checkbox" system-check></span></li>-->
+                    <li class="twitter-list-li-b">{{t.fileName}}</li>
+                    <li class="twitter-list-li-b">{{t.size +'B'}}</li>
+                    <li class="twitter-list-li-s"><i ng-click="downTwitter(t.newFileName)"></i></li>
+                </ul>
+            </li>
+        </ul>
+        <!--<div class="qq-chat-content">-->
+            <!--<h1>Chat Content</h1>-->
+            <!--<ul class="chat-list my-list">-->
+                <!--<li class="chat-list-li">-->
+                    <!--<h2>2017-02-01 14:12:14</h2>-->
+                    <!--<img src="images/woman.png" alt="" class="chat-object left-float">-->
+                    <!--<p class="left-p">Have you had a good time these past few days?</p>-->
+                <!--</li>-->
+                <!--<li class="chat-list-li">-->
+                    <!--<h2>2017-02-01 14:12:14</h2>-->
+                    <!--<img src="images/man.png" alt="" class="chat-object right-float">-->
+                    <!--<p class="right-p">Have you had a good time these past few days?</p>-->
+                <!--</li>-->
+            <!--</ul>-->
+        <!--</div>-->
+    </div>
+    <div class="qq-box" ng-show="telegramBox">
+        <div class="title-search">
+            <span class="new-brush" ng-click="getTelegramNew()" ng-class="isActive(newBrush)"></span>
+            <h2 ng-click="getTelegramNew()">Acquire Success</h2>
+            <select class="social-qq-select" ng-model="tNumber" ng-change="changeTNumber(tNumber)">
+                <option ng-repeat="t in telegramNumber">{{t.mytelegramIdNumber}}</option>
+            </select>
+            <!--<div class="search-box">-->
+                <!--<input type="text" placeholder="Search">-->
+                <!--<p></p>-->
+            <!--</div>-->
+        </div>
+        <ul class="qq-list system-list my-list">
+            <li class="system-list-li title-list-li">
+                <ul>
+                    <li class="qq-list-li-s title-li"><span><input type="checkbox" system-check-all></span></li>
+                    <li class="qq-list-li-b title-li">Phone</li>
+                    <li class="qq-list-li-b title-li">Contacts</li>
+                </ul>
+            </li>
+            <li class="system-list-li" ng-repeat="t in telegramList" ng-click="getTelegramChat(t.uid)">
+                <ul>
+                    <li class="qq-list-li-s"><span><input type="checkbox" system-check></span></li>
+                    <li class="qq-list-li-b">{{t.phone_number||'-'}}</li>
+                    <li class="qq-list-li-b">{{t.first_name+t.last_name||'-'}}</li>
+                </ul>
+            </li>
+        </ul>
+        <div class="qq-chat-content">
+            <h1>Chat Content</h1>
+            <ul class="chat-list my-list">
+                <li class="chat-list-li" ng-repeat="te in telegramChatList">
+                    <h2>{{te.te_date|date:'yyyy-MM-dd HH:mm:ss'}}</h2>
+                    <img src="images/woman.png" alt="" class="chat-object" ng-class="teChatFloat(te.te_outgoing)">
+                    <p ng-class="teContentFlag(te.te_outgoing)">{{te.te_message||'-'}}</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>移动侦控平台</title>
+    <link rel="stylesheet" href="css/jquery-ui-1.10.1.css">
+    <link rel="stylesheet" href="css/latoja.datepicker.css">
+    <link rel="stylesheet" href="css/index.css">
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="js/jquery-ui-1.10.1.min.js"></script>
+    <script src="js/angular.js"></script>
+    <script src="js/angular-route.js"></script>
+    <script src="js/myJs.js"></script>
+</head>
+<body>
+    <div class="screen-view">
+        <div class="title-side" ng-controller="titleC">
+            <h1>移动侦控平台</h1>
+            <!--<select class="system-classify">-->
+                <!--<option>测试1</option>-->
+                <!--<option>测试2</option>-->
+                <!--<option>测试3</option>-->
+            <!--</select>-->
+            <!--<select class="device-classify" ng-model="assDevice">-->
+                <!--<option ng-repeat="d in deviceList">{{'Device ID '+d.id}}</option>-->
+            <!--</select>-->
+            <div class="device-classify-box">
+                <h2 ng-click="getDeviceList()">{{deviceShow}}</h2>
+                <ul class="devices-list" ng-show="deviceListShow">
+                    <li ng-repeat="d in deviceList" ng-click="changeAssDevice(d.serialNum,d.id)">{{'Device ID '+d.id}}</li>
+                </ul>
+            </div>
+            <!--<h6 class="system-switch"></h6>-->
+            <!--<div class="user-switch"  ng-mouseenter="showUserSwitch()" ng-mouseleave="closeUserSwitch()">-->
+                <!--<span></span>-->
+                <!--<h2>admin</h2>-->
+                <!--<b ng-class="isActive(userSwitchBox)"></b>-->
+                <!--<div class="user-switch-box" ng-show="userSwitchBox" ng-mouseenter="showUserSwitch()">-->
+                    <!--<h6>Change Password</h6>-->
+                    <!--<h6>Exit</h6>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<h5 class="language-switch">Language</h5>-->
+        </div>
+        <div class="main-side">
+            <div class="nav-side" ng-controller="navC">
+                <ul class="nav-list">
+                    <li class="nav-list-li" ng-click="getPageTo('device')" ng-class="isActive(viewDevice)">
+                        <span></span>
+                        <h2>Device</h2>
+                    </li>
+                    <!--<li class="nav-list-li" ng-click="getPageTo('file-manager')" ng-class="isActive(viewFileManager)">-->
+                        <!--<span></span>-->
+                        <!--<h2>File Manager</h2>-->
+                    <!--</li>-->
+                    <!--<li class="nav-list-li" ng-click="getPageTo('cs-timeline')" ng-class="isActive(viewCSTimeline)">-->
+                        <!--<span></span>-->
+                        <!--<h2>CS Timeline</h2>-->
+                    <!--</li>-->
+                    <!--<li class="nav-list-li" ng-click="getPageTo('social')"  ng-class="isActive(viewSocial)">-->
+                        <!--<span></span>-->
+                        <!--<h2>Social</h2>-->
+                    <!--</li>-->
+                    <!--<li class="nav-list-li" ng-click="getPageTo('track-draw')" ng-class="isActive(viewTrackDraw)">-->
+                        <!--<span></span>-->
+                        <!--<h2>Track Draw</h2>-->
+                    <!--</li>-->
+                    <li class="nav-list-b-li">
+                        <div ng-click="showDetailList()" ng-class="isActive(viewDetailedContent)">
+                            <span></span>
+                            <h2>Detailed Content</h2>
+                            <p ng-class="isActive(detailList)"></p>
+                        </div>
+                        <ul class="detail-list" ng-show="detailList">
+                            <li ng-click="getPageTo('sms')" ng-class="isActive(viewSms)">SMS</li>
+                            <li ng-click="getPageTo('memo')" ng-class="isActive(viewMemo)">Memo</li>
+                            <li ng-click="getPageTo('address-book')" ng-class="isActive(viewAddressBook)">Address Book</li>
+                            <li ng-click="getPageTo('call-history')" ng-class="isActive(viewCallHistory)">Call History</li>
+                            <li ng-click="getPageTo('calendar')" ng-class="isActive(viewCalendar)">Calendar</li>
+                            <li ng-click="getPageTo('gps')" ng-class="isActive(viewGps)">GPS</li>
+                            <li ng-click="getPageTo('filmed-records')"  ng-class="isActive(viewFilmedRecords)">Filmed Records</li>
+                            <li ng-click="getPageTo('secret-photos')" ng-class="isActive(viewSecretPhotos)">Secret Photos</li>
+                            <li ng-click="getPageTo('social-inside')" ng-class="isActive(viewSocialInside)">Social</li>
+                            <li ng-click="getPageTo('browser-history')" ng-class="isActive(viewBrowserHistory)">Browser History</li>
+                            <li ng-click="getPageTo('recording-control')" ng-class="isActive(viewRecordingControl)">Recording Control</li>
+                            <li ng-click="getPageTo('file-manager-inside')" ng-class="isActive(viewFileManagerInside)">File Manager</li>
+                            <li ng-click="getPageTo('base-station')" ng-class="isActive(viewBaseStation)">Base Station</li>
+                            <li ng-click="getPageTo('wifi-control')" ng-class="isActive(viewWifiControl)">WIFI Control</li>
+                            <!--<li ng-click="getPageTo('return-mode')" ng-class="isActive(viewReturnMode)">Return Mode</li>-->
+                        </ul>
+                    </li>
+                    <!--<li class="nav-list-li" ng-click="getPageTo('command')" ng-class="isActive(viewCommand)">-->
+                        <!--<span></span>-->
+                        <!--<h2>Command</h2>-->
+                    <!--</li>-->
+                    <!--<li class="nav-list-li" ng-click="getPageTo('configuration')"  ng-class="isActive(viewConfiguration)">-->
+                        <!--<span></span>-->
+                        <!--<h2>Configuration</h2>-->
+                    <!--</li>-->
+                </ul>
+            </div>
+            <div class="view-side" ng-view></div>
+        </div>
+    </div>
+</body>
+</html>
